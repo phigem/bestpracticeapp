@@ -3,28 +3,72 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
-
+        <title>SAPUI5 Best Practice App for Ciber</title>
 		<script src="resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
-				data-sap-ui-libs="sap.m"
-				data-sap-ui-resourceroots='{"de.ciber.bestpractice": "./"}'
+				data-sap-ui-libs="sap.m, sap.ui.commons, sap.ui.unified, sap.ui.core"
+				data-sap-ui-debug="true"
+				data-sap-ui-logLevel="ALL"
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-resourceroots='{"de.ciber.bestpracticeapp": "./"}'
 				data-sap-ui-theme="sap_bluecrystal">
 		</script>
-		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
-		
+		<!-- 
+		Your application should live inside a namespace. This sample application's identifier is "bestpracticeapp",
+		within the "de.ciber" namespace, thus the name de.ciber.bestpracticeapp is the fully qualified identifier for this application.
+		This name is used in two places in the index file:
+            - in the bootstrap's data-sap-ui-resourceroots data parameter
+            - in the specification of the Component to load into the sap.ui.core.ComponentContainer
+        Pairing a namespace and folder location in the data-sap-ui-resourceroots declares where artifacts with that namespace can be found. 
+        In this example we are saying that the artifacts starting "de.ciber.bestpracticeapp" are to be found in the same folder ("./") as this index file.
+        When the component is specified with the name property of the sap.ui.core.ComponentContainer, it is by means of the "de.ciber.bestpracticeapp" namespace. 
+        By default, the container will look for a component called "Component" in this namespace, which thus translates to de.ciber.bestpracticeapp.Component. 
+        This will be found in the file Component.js in the same folder, because we've specified this same folder as being where resources in the de.ciber.bestpracticeapp namespace are to be found.
+		-->
 		
 		<script>
-				sap.ui.localResources("view");
-				var app = new sap.m.App({initialPage:"idRootView"});
-				var page = sap.ui.view({id:"idRootView", viewName:"de.ciber.bestpractice.view.RootView", type:sap.ui.core.mvc.ViewType.XML});
-				app.addPage(page);
-				app.placeAt("content");
-		</script>
+		jQuery.sap.require("sap.ui.core.IconPool");
 		
-	</head>
-	<body class="sapUiBody" role="application">
-		<div id="content"></div>
-	</body>
+            sap.ui.getCore().attachInit(function() {
+                new sap.ui.unified.Shell({
+                    showPane:true,
+                    user : new sap.ui.unified.ShellHeadUserItem({username:"PHIGEM", image:"https://www.needbox.com/assets/dummy-person.jpg"}),
+                    search: new sap.m.SearchField({showRefreshButton:true, placeholder:"Suche starten"}),
+                    headItems:[
+                        new sap.ui.unified.ShellHeadItem({icon:"sap-icon://menu2"}),
+                        new sap.ui.unified.ShellHeadItem({icon:"sap-icon://home"}),
+                        new sap.ui.unified.ShellHeadItem({icon:"sap-icon://action-settings"})
+                        ],
+                        headEndItems:[
+                        new sap.ui.unified.ShellHeadItem({icon:"sap-icon://log"})
+                        ],
+                        content:[
+                                new sap.m.Text({text:"Inhalt rechts"})
+                            ],
+                            paneContent:[
+                                new sap.m.Text({text:"Panel links"})
+                            ]
+                }).placeAt("content");
+            });
+        </script>
+		
+		<!--
+        <script>
+            sap.ui.getCore().attachInit(function() {
+                new sap.m.Shell({
+                    app: new sap.ui.core.ComponentContainer({
+                        height : "100%",
+                        name : "de.ciber.bestpracticeapp"
+                    })
+                }).placeAt("content");
+            });
+        </script>
+        -->
+    </head>
+    
+    <body class="sapUiBody" id="content" role="application">
+
+    </body>
 </html>
 	
 

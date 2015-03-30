@@ -1,4 +1,4 @@
-sap.ui.controller("de.ciber.bestpractice.view.RootView", {
+sap.ui.controller("de.ciber.bestpracticeapp.view.RootView", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

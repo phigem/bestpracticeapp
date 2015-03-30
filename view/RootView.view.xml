@@ -1,10 +1,7 @@
-<core:View xmlns:core="sap.ui.core" 
+<mvc:View
 	xmlns:mvc="sap.ui.core.mvc" 
-	xmlns="sap.m" controllerName="de.ciber.bestpractice.view.RootView" 
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Title">
-		<content>
-		
-		</content>
-	</Page>
-</core:View>
+	xmlns="sap.m" 
+	controllerName="de.ciber.bestpracticeapp.view.RootView" 
+	displayBlock="true">
+	<SplitContainer id="RootSplitApp" masterButtonText="{i18n>CIBER_APP_TITLE}"/>
+</mvc:View>
