@@ -1,4 +1,9 @@
 {
+    "documentation":{
+        "documentation1" : "The descriptor for applications, components, and libraries is inspired by the Web Application Manifest concept introduced by the W3C. ",
+        "documentation2" : "The descriptor provides a central, machine-readable and easy-to-access location for storing metadata associated with an application, an application component, or a library",
+        "start_url":"Start page of your app, if available"
+    },
    "_version":"1.1.0",
    "start_url":"index.html",
    "sap.app":{

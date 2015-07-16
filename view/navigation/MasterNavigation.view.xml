@@ -1,9 +1,0 @@
-<mvc:View
-	xmlns:mvc="sap.ui.core.mvc" 
-	xmlns="sap.m">
-	    	<Button 
-		text="Greets">
-			<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
-			<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
-	</Button>
-	</mvc:View>

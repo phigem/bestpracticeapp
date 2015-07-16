@@ -21,6 +21,7 @@
 						<content>
                             <ciber:CiberInput highlighted="true"/>
                             <ciber:CiberInput type="Password" highlighted="true"/>
+                            <Button press="onOpenDialog" text="Open Dialog Popup"/>
 						</content>
 					</Panel>
 				</content>

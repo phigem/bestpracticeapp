@@ -1,0 +1,15 @@
+<!-- Fragmant Conventions
+- Always use the addDependent method to integrate the fragment into the control tree of the view.
+- Private functions and variables should always start with an underscore.
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Dialog title="Message for you!">
+	<!--
+	The term begin indicates that this button should be displayed before the content of the endButton aggregation. 
+	We use the terms begin and end as a synonym to “left” and “right", but in right-to-left mode for specific languages the order is switched.
+	-->
+		<beginButton>
+			<Button press="onCloseDialog" text="Schließen" icon="sap-icon://sys-cancel-2"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>
