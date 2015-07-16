@@ -17,8 +17,15 @@ In the component, we now completely remove the lines of code containing the mode
 sap.ui.define([
    "sap/ui/core/UIComponent",
    "sap/ui/model/json/JSONModel",
+<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
    "de/ciber/bestpracticeapp/controller/DialogPopup"
 ], function(UIComponent, JSONModel, DialogPopup) {
+=======
+   "sap/ui/model/odata/v2/ODataModel",
+   "de/ciber/bestpracticeapp/controller/popup/DialogMessage",
+	"sap/ui/Device"
+], function(UIComponent, JSONModel, ODataModel, DialogMessage, Device) {
+>>>>>>> cbb7fe1 Rebase after Bullshit
 	"use strict";
 	return UIComponent.extend("de.ciber.bestpracticeapp.Component", {
 	    //All application-specific configuration settings will further be put in a separate descriptor file called manifest.json.
@@ -27,7 +34,8 @@ sap.ui.define([
 		metadata: {
 			manifest: "json"
 		},
-		//We create a Component.js file in the webapp folder that will hold our application setup. The init function of the component is automatically invoked by OpenUI5 when the component is instantiated. Our component inherits from the base class sap.ui.core.UIComponent and it is obligatory to make the super call to the init function of the base class in the overridden init method.
+		//We create a Component.js file in the webapp folder that will hold our application setup. The init function of the component is automatically invoked by OpenUI5 when the component is instantiated.
+		//Our component inherits from the base class sap.ui.core.UIComponent and it is obligatory to make the super call to the init function of the base class in the overridden init method.
 		init: function() {
 			// Call the init function of the parent. The init function of the component is automatically invoked by OpenUI5 when the component is instantiated. 
 			// Our component inherits from the base class sap.ui.core.UIComponent and it is obligatory to make the super call to the init function of the base class in the overridden init method.            
@@ -36,6 +44,7 @@ sap.ui.define([
 			// always use absolute paths relative to our own component
 			var rootPath = jQuery.sap.getModulePath("de.ciber.bestpracticeapp");
 			jQuery.sap.log.info(rootPath, "ciber-log: Details for rootpath", this);
+<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
 			// set device model
 			var deviceModel = new JSONModel({
 				isTouch: sap.ui.Device.support.touch,
@@ -52,6 +61,39 @@ sap.ui.define([
             //We now expand our reuse concept and invoke the dialog on the component level. 
             //This allows us to use the dialog in multiple views throughout our app without having to put the instantiation code in each controller.
             this.dialogPopup = new DialogPopup();
+=======
+			// In the app component we add a dependency to sap.ui.Device and initialize the device model in the init method. We can simply pass the loaded dependency Device to the constructor function of the JSONModel. 
+			// This will make most propeties of the OpenUI5 device API available as a JSON model, We have to set the binding mode to OneWay as the device model is read-only and we want to avoid changing the model accidentially. 
+			// The model is then set on the component as a named model so that we can reference it in data binding as we have seen in the view above.
+			var oDeviceModel = new JSONModel(Device);
+			oDeviceModel.setDefaultBindingMode("OneWay");
+			this.setModel(oDeviceModel, "device");
+
+			var oConfig = this.getMetadata().getConfig();
+
+			// set invoice model - local
+			//In the init method we now create a JSON model with our test data file by passing in the fully qualified path from the index.html file to the JSONModel constructor. 
+			//We can transform the namespace and the local filename to a path relative to the application root by calling the getModulePath helper method of OpenUI5. Therefore we have to pass in the namespace of the app and the relative path to a file. 
+			//The namespace of the app can be read from the id parameter in the section sap.app by using the descriptor API. The custom configuration parameter is accessed similarly by calling this.getConfig and accessing the parameter by the key we defined.
+			var sNamespace = this.getMetadata().getManifestEntry("sap.app").id;
+			var oInvoiceModel = new JSONModel(jQuery.sap.getModulePath(sNamespace, oConfig.invoiceLocal));
+			this.setModel(oInvoiceModel, "invoice");
+			
+			//We now expand our reuse concept and invoke the dialog on the component level. 
+            //This allows us to use the dialog in multiple views throughout our app without having to put the instantiation code in each controller.
+            this.dialogMessage = new DialogMessage();
+
+		},
+		getContentDensityClass : function() {
+			if (!this._sContentDensityClass) {
+				if (!sap.ui.Device.support.touch) {
+					this._sContentDensityClass = "sapUiSizeCompact";
+				} else {
+					this._sContentDensityClass = "sapUiSizeCozy";
+				}
+			}
+			return this._sContentDensityClass;
+>>>>>>> cbb7fe1 Rebase after Bullshit
 		}
 	});
 });

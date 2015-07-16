@@ -3,6 +3,14 @@
 	"welcomeFile": "index.html",
 	"routes": [
 		{
+			"path": "/destinations/NorthwindV3",
+			"target": {
+				"type": "destination",
+				"name": "NorthwindV3"
+			},
+			"description": "Northwind V3 OData Service"
+    },
+		{
 			"documentation": "With this file you tell the dispatcher for the HTML5 apps to re-direct all calls on /beta-resources to the destination openui5beta.",
 			"path": "/beta-resources",
 			"target": {

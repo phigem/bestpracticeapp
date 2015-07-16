@@ -6,22 +6,55 @@
     - The default XML namespace is sap.m
     - Other XML namespaces are referenced by an alias
 -->
-<mvc:View controllerName="de.ciber.bestpracticeapp.controller.RootApp" displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-    xmlns:ciber="de.ciber.bestpracticeapp.control">
-	<App afterNavigate="" backgroundColor="" backgroundImage="" backgroundOpacity="1" backgroundRepeat="false" class="sapUiCiber"
-		defaultTransitionName="slide" height="100%" homeIcon="" id="idRootApp" navigate="" orientationChange="" visible="true" width="100%">
+<mvc:View controllerName="de.ciber.bestpracticeapp.controller.RootApp" displayBlock="true" xmlns:ciber="de.ciber.bestpracticeapp.control"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<App height="100%" afterNavigate="" homeIcon="" backgroundRepeat="false" backgroundColor="" backgroundOpacity="1" backgroundImage=""
+		class="sapUiCiber" defaultTransitionName="slide" id="idRootApp" navigate="" orientationChange="" visible="true" width="100%">
 		<tooltip></tooltip>
 		<!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents>
 		<!-- sap.ui.core.Control, since 1.19 -->
 		<pages>
 			<Page title="{i18n>HOME_PAGE_TITLE}">
+				<Button press="onOpenDialog" text="Open Dialog Popup"/>
 				<content>
-					<Panel headerText="{i18n>GREET_BUTTON_TEXT}" width="auto">
+					<Panel headerText="Locale Invoices" width="auto">
 						<content>
+<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
                             <ciber:CiberInput highlighted="true"/>
                             <ciber:CiberInput type="Password" highlighted="true"/>
                             <Button press="onOpenDialog" text="Open Dialog Popup"/>
+=======
+							<List class="sapUiResponsiveMargin" headerText="Invoice List" id="idInvoiceList" items="{invoice>/Invoices}" width="auto">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>invoiceListTitle}"/>
+										<ToolbarSpacer/>
+										<SearchField search="onFilterInvoices" width="50%"/>
+									</Toolbar>
+								</headerToolbar>
+								<items>
+									<ObjectListItem title="{invoice>Quantity} x {invoice>ProductName}"/>
+								</items>
+							</List>
+						</content>
+					</Panel>
+					<Panel headerText="OData Service" width="auto">
+						<content>
+							<List class="sapUiResponsiveMargin" headerText="Orders" id="idOrderList" items="{ path : 'northwind>/Orders', sorter : { path : 'ShipName', group : true } }"
+								width="auto">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Orders"/>
+										<ToolbarSpacer/>
+										<SearchField search="onFilterOrder" width="50%"/>
+									</Toolbar>
+								</headerToolbar>
+								<items>
+									<ObjectListItem title="{northwind>OrderID}"/>
+								</items>
+							</List>
+>>>>>>> cbb7fe1 Rebase after Bullshit
 						</content>
 					</Panel>
 				</content>
