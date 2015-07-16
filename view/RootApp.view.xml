@@ -19,11 +19,8 @@
 				<content>
 					<Panel headerText="{i18n>GREET_BUTTON_TEXT}" width="auto">
 						<content>
-							<Button press="onShowWelcomeMessage" text="{i18n>GREET_BUTTON_TEXT}"/>
-							<Input type="Password" id="idDefaultControl" class="sapThemeHighlight-asBackgroundColor" description="{i18n>GREET_INPUT_DESCRIPTION_TEXT}" value="{userdata>/user/name}" width="60%"/>
-							<Text class="sapThemeHighlight-asColor myCustomText" text="{userdata>/user/name}"/>
-							<ciber:CiberInput id="idTestControl" highlighted="true"/>
-							<ciber:CiberInput type="Password" highlighted="true"/>
+                            <ciber:CiberInput highlighted="true"/>
+                            <ciber:CiberInput type="Password" highlighted="true"/>
 						</content>
 					</Panel>
 				</content>

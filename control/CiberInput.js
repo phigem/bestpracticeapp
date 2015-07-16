@@ -2,13 +2,11 @@
 //Due to their nature, they are sometimes also referred to as "notepad” or “on the fly” controls.
 //In our case, we extend sap.m.Input
 sap.ui.define([
-	"sap/m/Input",
-	"sap/m/InputRenderer",
-	"sap/ui/core/Renderer"
-], function(Input, InputRenderer, CoreRenderer) {
+	"sap/m/Input"
+], function(Input) {
 	"use strict";
 
-	var Renderer = CoreRenderer.extend(InputRenderer);
+
 
 	return Input.extend("de.ciber.bestpracticeapp.control.CiberInput", {
 
@@ -38,8 +36,8 @@ sap.ui.define([
 		},
 		renderer: {
 			writeInnerAttributes: function(oRm, oInput) {
-				Renderer.writeInnerAttributes(oRm, oInput);
-				
+			    sap.m.InputRenderer.writeInnerAttributes.apply(this, arguments);
+
 				//Check if highlighted is set and if no value State is active
 				if (    oInput.getHighlighted() 
 				        && oInput.getValueState() === sap.ui.core.ValueState.None
