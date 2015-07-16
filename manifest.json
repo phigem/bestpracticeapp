@@ -1,0 +1,79 @@
+{
+   "_version":"1.1.0",
+   "start_url":"index.html",
+   "sap.app":{
+      "documentation":{
+         "id":"The namespace of our application component",
+         "type":"Defines what we want to configure, here: an application",
+         "i18n":"Relative URL to the properties file that contains the text symbols for the descriptor; default: i18n/i18n.properties",
+         "title":"Title of the application",
+         "description":"Short description text what the application does",
+         "applicationVersion":"The version of the application to be able to easily update the application later on",
+         "tags": "Containing an array of language-dependent keywords to be specified via {{…}} syntax",
+         "ach":"The application component hierarchy (this is an SAP-internal parameter to assign a support component to the application)"
+      },
+      "_version":"1.1.0",
+      "id":"de.ciber.bestpracticeapp",
+      "type":"application",
+      "i18n": "i18n/i18n.properties",
+      "title":"{{APP_TITLE}}",
+      "description":"{{APP_DESCRIPTION}}",
+      "applicationVersion":{
+         "version":"1.0.0"
+      },
+      "ach":"CA-UI5-DOC"
+   },
+   "sap.ui":{
+      "documentation":{
+         "technology":"This value specifies the UI technology; in our case we use OpenUI5",
+         "icons": "Contains object with app-specific icons, for example:\nicon – Icon of the app\nfavIcon – ICO file to be used inside the browser and for desktop shortcuts", 
+         "deviceTypes":"Tells what devices are supported by the app: desktop, tablet, phone (all true by default)",
+         "supportedThemes":"An array containing a list of SAP themes supported by the app, for example sap_bluecrystal"
+      },
+      "_version":"1.1.0",
+      "technology":"UI5",
+      "deviceTypes":{
+         "desktop":true,
+         "tablet":true,
+         "phone":true
+      },
+      "supportedThemes":[
+         "sap_bluecrystal"
+      ]
+   },
+   "sap.ui5":{
+      "documentation":{
+         "rootView":"If you specify this parameter, the component will automatically instantiate the view and use it as the root for this component",
+         "dependencies":"Here we declare the UI libraries used in the application",
+         "models":"Defines models that should be created or destroyed along the component's lifecycle. The key represents the model name. Use an empty string (\"\") for the default model.\ntype - Model class name\nuri - Relative URL in the component; takes embeddedBy into account if filled, or server absolute for model\nsettings - Object that is passed to the model constructor\ndataSource - String of key/alias from sap.app dataSources to reference an existing data source",
+         "resources": "Relative URLs in the component, taking embeddedBy into account if filled, to js (JavaScript) and css resources the app needs for specifying the uri and an id (optional) for CSS. The JavaScript files are loaded by the require mechanism. The CSS files are added to the head of the HTML page as a link tag. The resources are resolved relative to the location of the manifest.json file.",
+         "config":"Static configuration; specify the name-value pairs that you need in your component.",
+         "routing":"Provides configuration parameters for route and router."
+      },
+      "_version":"1.1.0",
+      "rootView":"de.ciber.bestpracticeapp.view.RootApp",
+      "dependencies":{
+         "minUI5Version":"1.30",
+         "libs":{
+            "sap.m":{
+
+            }
+         }
+      },
+	"models": {
+		"i18n": {
+			"type": "sap.ui.model.resource.ResourceModel",
+			"settings": {
+				"bundleName": "de.ciber.bestpracticeapp.i18n.i18n"
+			}
+		}
+	},
+		"resources": {
+		  "css": [
+			{
+			  "uri": "css/style.css"
+			}
+		  ]
+		}
+   }
+}

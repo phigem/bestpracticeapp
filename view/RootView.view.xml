@@ -1,7 +1,0 @@
-<mvc:View
-	xmlns:mvc="sap.ui.core.mvc" 
-	xmlns="sap.m" 
-	controllerName="de.ciber.bestpracticeapp.view.RootView" 
-	displayBlock="true">
-	<SplitContainer id="RootSplitApp" masterButtonText="{i18n>CIBER_APP_TITLE}"/>
-</mvc:View>

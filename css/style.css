@@ -1,0 +1,6 @@
+.sapUiCiber .myCustomText {
+   font-weight: bold;
+}
+.ciberHighlight {
+   background-color: @sapUiSearchHighlight !important;
+}

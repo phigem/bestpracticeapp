@@ -1,0 +1,33 @@
+<!--
+    Conventions
+    - View names are capitalized
+    - All views are stored in the view folder
+    - Names of XML views always end with *.view.xml
+    - The default XML namespace is sap.m
+    - Other XML namespaces are referenced by an alias
+-->
+<mvc:View controllerName="de.ciber.bestpracticeapp.controller.RootApp" displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+    xmlns:ciber="de.ciber.bestpracticeapp.control">
+	<App afterNavigate="" backgroundColor="" backgroundImage="" backgroundOpacity="1" backgroundRepeat="false" class="sapUiCiber"
+		defaultTransitionName="slide" height="100%" homeIcon="" id="idRootApp" navigate="" orientationChange="" visible="true" width="100%">
+		<tooltip></tooltip>
+		<!-- sap.ui.core.TooltipBase -->
+		<dependents></dependents>
+		<!-- sap.ui.core.Control, since 1.19 -->
+		<pages>
+			<Page title="{i18n>HOME_PAGE_TITLE}">
+				<content>
+					<Panel headerText="{i18n>GREET_BUTTON_TEXT}" width="auto">
+						<content>
+							<Button press="onShowWelcomeMessage" text="{i18n>GREET_BUTTON_TEXT}"/>
+							<Input type="Password" id="idDefaultControl" class="sapThemeHighlight-asBackgroundColor" description="{i18n>GREET_INPUT_DESCRIPTION_TEXT}" value="{userdata>/user/name}" width="60%"/>
+							<Text class="sapThemeHighlight-asColor myCustomText" text="{userdata>/user/name}"/>
+							<ciber:CiberInput id="idTestControl" highlighted="true"/>
+							<ciber:CiberInput type="Password" highlighted="true"/>
+						</content>
+					</Panel>
+				</content>
+			</Page>
+		</pages><!-- sap.ui.core.Control -->
+	</App>
+</mvc:View>

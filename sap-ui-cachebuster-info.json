@@ -1,0 +1,17 @@
+{
+  "view/RootApp.view.xml": "1437029321000",
+  "view/navigation/MasterNavigation.view.xml": "1436955217000",
+  "README.md": "1437034312000",
+  "index.html": "1437035970000",
+  "Component.js": "1437032071000",
+  "i18n/i18n_en.properties": "1436956851000",
+  "i18n/i18n_de.properties": "1436956844000",
+  "i18n/i18n.properties": "1436957377000",
+  "asset/image/dummy_person.jpg": "1436949632000",
+  "manifest.json": "1436957801000",
+  "controller/RootApp.controller.js": "1436971249000",
+  "Component-preload.js": "1437034006000",
+  "css/style.css": "1436973294000",
+  "control/CiberInput.js": "1437029807000",
+  "control/CiberProductRating.js": "1436965149000"
+}

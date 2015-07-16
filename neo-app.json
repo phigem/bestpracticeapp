@@ -1,23 +1,34 @@
 {
-  "welcomeFile": "index.html",
-  "routes": [
-    {
-      "path": "/resources",
-      "target": {
-        "type": "service",
-        "name": "sapui5",
-        "entryPath": "/resources"
-      },
-      "description": "SAPUI5 Resources"
+	"documentation": "The neo-app.json file needs to be deployed in the same folder as the index.html file. It creates the connection between the path we want to use to access the OpenUI5 Beta resources and the destination configuration we have to configure in the Destinations panel of your trial account on SAP HANA Cloud Platform Cockpit.",
+	"welcomeFile": "index.html",
+	"routes": [
+		{
+			"documentation": "With this file you tell the dispatcher for the HTML5 apps to re-direct all calls on /beta-resources to the destination openui5beta.",
+			"path": "/beta-resources",
+			"target": {
+				"type": "destination",
+				"name": "openui5beta",
+				"entryPath": "/resources"
+			},
+			"description": "OpenUI5 Beta Resources"
     },
-    {
-      "path": "/test-resources",
-      "target": {
-        "type": "service",
-        "name": "sapui5",
-        "entryPath": "/test-resources"
-      },
-      "description": "SAPUI5 Test Resources"
+		{
+			"path": "/resources",
+			"target": {
+				"type": "service",
+				"name": "sapui5",
+				"entryPath": "/resources"
+			},
+			"description": "SAPUI5 Resources"
+    },
+		{
+			"path": "/test-resources",
+			"target": {
+				"type": "service",
+				"name": "sapui5",
+				"entryPath": "/test-resources"
+			},
+			"description": "SAPUI5 Test Resources"
     }
   ]
 }

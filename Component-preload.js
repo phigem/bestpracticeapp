@@ -1,0 +1,1 @@
+jQuery.sap.declare("de.ciber.bestpraciceapp.Component-preload");
