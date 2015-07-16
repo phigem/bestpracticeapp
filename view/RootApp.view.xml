@@ -8,8 +8,8 @@
 -->
 <mvc:View controllerName="de.ciber.bestpracticeapp.controller.RootApp" displayBlock="true" xmlns:ciber="de.ciber.bestpracticeapp.control"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-	<App height="100%" afterNavigate="" homeIcon="" backgroundRepeat="false" backgroundColor="" backgroundOpacity="1" backgroundImage=""
-		class="sapUiCiber" defaultTransitionName="slide" id="idRootApp" navigate="" orientationChange="" visible="true" width="100%">
+	<App class="sapUiCiber" height="100%" defaultTransitionName="slide" backgroundRepeat="false" backgroundColor="" backgroundOpacity="1"
+		backgroundImage="" afterNavigate="" homeIcon="" id="idRootApp" navigate="" orientationChange="" visible="true" width="100%">
 		<tooltip></tooltip>
 		<!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents>
@@ -18,7 +18,30 @@
 			<Page title="{i18n>HOME_PAGE_TITLE}">
 				<Button press="onOpenDialog" text="Open Dialog Popup"/>
 				<content>
-					<Panel headerText="Locale Invoices" width="auto">
+					<Panel headerText="OData Service" width="auto">
+						<content>
+							<List class="sapUiResponsiveMargin" headerText="Orders" id="idOrderList"
+								items="{ path : 'northwind>/Orders', sorter : { path : 'ShipName', group : true } }" width="auto">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Orders"/>
+										<ToolbarSpacer/>
+										<SearchField search="onFilterOrder" width="50%"/>
+									</Toolbar>
+								</headerToolbar>
+								<items>
+									<ObjectListItem iconDensityAware="true" detailPress="onOrderDetailPress" markFavorite="true" type="Active" title="{northwind>OrderID}" number="{northwind>Freight}"
+										numberUnit="EUR" intro="Auftragsnummer" icon="sap-icon://customer-order-entry" press="onOrderPress" selected="false" markFlagged="true" showMarkers="true" markLocked="true" unread="false" visible="true">
+										<ObjectAttribute text="{northwind>ShipName}" title="Kunde"/>
+										<ObjectAttribute text="{northwind>ShipAddress}" title="Straße"/>
+										<ObjectAttribute text="{northwind>ShipPostalCode}, {northwind>ShipCity}" title="PLZ, Stadt"/>
+										<ObjectAttribute text="{northwind>ShipRegion}/{northwind>ShipCountry}" title="Region/Land"/>
+									</ObjectListItem>
+								</items>
+							</List>
+						</content>
+					</Panel>
+					<Panel headerText="Locale Invoices" width="auto" expanded="false" expandable="true">
 						<content>
 							<List class="sapUiResponsiveMargin" headerText="Invoice List" id="idInvoiceList" items="{invoice>/Invoices}" width="auto">
 								<headerToolbar>
@@ -30,23 +53,6 @@
 								</headerToolbar>
 								<items>
 									<ObjectListItem title="{invoice>Quantity} x {invoice>ProductName}"/>
-								</items>
-							</List>
-						</content>
-					</Panel>
-					<Panel headerText="OData Service" width="auto">
-						<content>
-							<List class="sapUiResponsiveMargin" headerText="Orders" id="idOrderList" items="{ path : 'northwind>/Orders', sorter : { path : 'ShipName', group : true } }"
-								width="auto">
-								<headerToolbar>
-									<Toolbar>
-										<Title text="Orders"/>
-										<ToolbarSpacer/>
-										<SearchField search="onFilterOrder" width="50%"/>
-									</Toolbar>
-								</headerToolbar>
-								<items>
-									<ObjectListItem title="{northwind>OrderID}"/>
 								</items>
 							</List>
 						</content>

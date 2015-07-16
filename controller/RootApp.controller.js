@@ -36,9 +36,9 @@ sap.ui.define([
 		 * @memberOf de.ciber.bestpractice.view.RootView
 		 */
 		onInit: function() {
-		    // We query the helper function that we defined on the app component to set the corresponding style class on the app view.
-		    // All controls inside the app view will now automatically adjust either to the compact or cozy size as defined by the style.
-		    this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+			// We query the helper function that we defined on the app component to set the corresponding style class on the app view.
+			// All controls inside the app view will now automatically adjust either to the compact or cozy size as defined by the style.
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
 			var oData = {
 				user: {
@@ -63,21 +63,18 @@ sap.ui.define([
 		},
 
 		//The onOpenDialog method now accesses its component by calling the helper method getOwnerComponent. 
-        //When calling the open method of the reuse object we pass in the current view to connect it to the dialog. 
+		//When calling the open method of the reuse object we pass in the current view to connect it to the dialog. 
 		onOpenDialog: function() {
 			this.getOwnerComponent().dialogMessage.open(this.getView());
 		},
 
 		onFilterInvoices: function(oEvent) {
 
-			// build filter array
 			var aFilter = [];
 			var sQuery = oEvent.getParameter("query");
 			if (sQuery) {
 				aFilter.push(new Filter("ProductName", FilterOperator.Contains, sQuery));
 			}
-
-			// filter binding
 			var oList = this.getView().byId("idInvoiceList");
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
@@ -85,17 +82,54 @@ sap.ui.define([
 
 		onFilterOrder: function(oEvent) {
 
-			// build filter array
+			// array of filters on which logical conjunction is applied
+			// aFilter is an array of other instances of sap.ui.model.Filter. If bAnd is set all filters within the filter will be ANDed else they will be ORed.
 			var aFilter = [];
-			var sQuery = oEvent.getParameter("query");
-			if (sQuery && jQuery.isNumeric(sQuery)) {
-			    var iQuery = parseInt(sQuery,10);
-				aFilter.push(new Filter("OrderID", FilterOperator.Contains, iQuery));
-			}
 
-			// filter binding
+			//indicates whether an "and" logical conjunction is applied on the filters. If it's set to false, an "or" conjunction is applied
+			var bAnd = false;
+
+			var sQuery = oEvent.getParameter("query");
+
+			if (sQuery) {
+				if (jQuery.isNumeric(sQuery)) {
+					var iQuery = parseInt(sQuery, 10);
+					aFilter.push(new Filter({
+						path: "OrderID", //the binding path for this filter
+						operator: FilterOperator.Contains, //operator used for the filter
+						value1: iQuery //first value to use for filter
+					}));
+				}
+				aFilter.push(new Filter({
+					path: "ShipName",
+					operator: FilterOperator.Contains,
+					value1: sQuery
+				}));
+				aFilter.push(new Filter({
+					path: "ShipAddress",
+					operator: FilterOperator.Contains,
+					value1: sQuery
+				}));
+				aFilter.push(new Filter({
+					path: "ShipCity",
+					operator: FilterOperator.Contains,
+					value1: sQuery
+				}));
+
+				aFilter = new Filter(aFilter, bAnd);
+
+
+			} else {
+			    
+			    // filter binding
+				aFilter = null;
+				
+			}
+			
 			var oList = this.getView().byId("idOrderList");
 			var oBinding = oList.getBinding("items");
+			
+			// filter binding
 			oBinding.filter(aFilter);
 		}
 		/**
