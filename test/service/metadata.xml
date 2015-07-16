@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0"
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="NorthwindModel" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Order">
+                <Key>
+                    <PropertyRef Name="OrderID"/>
+                </Key>
+                <Property Name="OrderID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+				xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/>
+                <Property FixedLength="true" MaxLength="5" Name="CustomerID" Type="Edm.String" Unicode="true"/>
+                <Property Name="EmployeeID" Type="Edm.Int32"/>
+                <Property Name="OrderDate" Type="Edm.DateTime"/>
+                <Property Name="RequiredDate" Type="Edm.DateTime"/>
+                <Property Name="ShippedDate" Type="Edm.DateTime"/>
+                <Property Name="ShipVia" Type="Edm.Int32"/>
+                <Property Name="Freight" Precision="19" Scale="4" Type="Edm.Decimal"/>
+                <Property FixedLength="false" MaxLength="40" Name="ShipName" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="60" Name="ShipAddress" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="ShipCity" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="ShipRegion" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="10" Name="ShipPostalCode" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="ShipCountry" Type="Edm.String" Unicode="true"/>
+                <!--
+                <NavigationProperty FromRole="Orders" Name="Customer" Relationship="NorthwindModel.FK_Orders_Customers" ToRole="Customers"/>
+                <NavigationProperty FromRole="Orders" Name="Employee" Relationship="NorthwindModel.FK_Orders_Employees" ToRole="Employees"/>
+                <NavigationProperty FromRole="Orders" Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Orders" ToRole="Order_Details"/>
+                <NavigationProperty FromRole="Orders" Name="Shipper" Relationship="NorthwindModel.FK_Orders_Shippers" ToRole="Shippers"/>
+                -->
+            </EntityType>
+
+            <EntityType Name="Invoice">
+                <Key>
+                    <PropertyRef Name="CustomerName"/>
+                    <PropertyRef Name="Discount"/>
+                    <PropertyRef Name="OrderID"/>
+                    <PropertyRef Name="ProductID"/>
+                    <PropertyRef Name="ProductName"/>
+                    <PropertyRef Name="Quantity"/>
+                    <PropertyRef Name="Salesperson"/>
+                    <PropertyRef Name="ShipperName"/>
+                    <PropertyRef Name="UnitPrice"/>
+                </Key>
+                <Property FixedLength="false" MaxLength="40" Name="ShipName" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="60" Name="ShipAddress" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="ShipCity" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="ShipRegion" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="10" Name="ShipPostalCode" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="ShipCountry" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="true" MaxLength="5" Name="CustomerID" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="40" Name="CustomerName" Nullable="false" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="60" Name="Address" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="City" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="Region" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="10" Name="PostalCode" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="15" Name="Country" Type="Edm.String" Unicode="true"/>
+                <Property FixedLength="false" MaxLength="31" Name="Salesperson" Nullable="false" Type="Edm.String" Unicode="true"/>
+                <Property Name="OrderID" Nullable="false" Type="Edm.Int32"/>
+                <Property Name="OrderDate" Type="Edm.DateTime"/>
+                <Property Name="RequiredDate" Type="Edm.DateTime"/>
+                <Property Name="ShippedDate" Type="Edm.DateTime"/>
+                <Property FixedLength="false" MaxLength="40" Name="ShipperName" Nullable="false" Type="Edm.String" Unicode="true"/>
+                <Property Name="ProductID" Nullable="false" Type="Edm.Int32"/>
+                <Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/>
+                <Property Name="UnitPrice" Nullable="false" Precision="19" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="Quantity" Nullable="false" Type="Edm.Int16"/>
+                <Property Name="Discount" Nullable="false" Type="Edm.Single"/>
+                <Property Name="ExtendedPrice" Precision="19" Scale="4" Type="Edm.Decimal"/>
+                <Property Name="Freight" Precision="19" Scale="4" Type="Edm.Decimal"/>
+            </EntityType>
+            <!--
+				<EntityType Name="Category"><Key><PropertyRef Name="CategoryID"/></Key><Property Name="CategoryID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+					xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/><Property FixedLength="false" MaxLength="15" Name="CategoryName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="Max" Name="Description" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="Max" Name="Picture" Type="Edm.Binary"/><NavigationProperty FromRole="Categories" Name="Products" Relationship="NorthwindModel.FK_Products_Categories" ToRole="Products"/></EntityType>
+				<EntityType Name="CustomerDemographic"><Key><PropertyRef Name="CustomerTypeID"/></Key><Property FixedLength="true" MaxLength="10" Name="CustomerTypeID" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="Max" Name="CustomerDesc" Type="Edm.String" Unicode="true"/><NavigationProperty FromRole="CustomerDemographics" Name="Customers" Relationship="NorthwindModel.CustomerCustomerDemo" ToRole="Customers"/></EntityType>
+				<EntityType Name="Customer"><Key><PropertyRef Name="CustomerID"/></Key><Property FixedLength="true" MaxLength="5" Name="CustomerID" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="40" Name="CompanyName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="30" Name="ContactName" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="30" Name="ContactTitle" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="60" Name="Address" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="City" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Region" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="10" Name="PostalCode" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Country" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="24" Name="Phone" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="24" Name="Fax" Type="Edm.String" Unicode="true"/><NavigationProperty FromRole="Customers" Name="Orders" Relationship="NorthwindModel.FK_Orders_Customers" ToRole="Orders"/><NavigationProperty FromRole="Customers" Name="CustomerDemographics" Relationship="NorthwindModel.CustomerCustomerDemo"
+					ToRole="CustomerDemographics"/></EntityType>
+				<EntityType Name="Employee"><Key><PropertyRef Name="EmployeeID"/></Key><Property Name="EmployeeID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+					xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/><Property FixedLength="false" MaxLength="20" Name="LastName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="10" Name="FirstName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="30" Name="Title" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="25" Name="TitleOfCourtesy" Type="Edm.String" Unicode="true"/><Property Name="BirthDate" Type="Edm.DateTime"/><Property Name="HireDate" Type="Edm.DateTime"/><Property FixedLength="false" MaxLength="60" Name="Address" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="City" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Region" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="10" Name="PostalCode" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Country" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="24" Name="HomePhone" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="4" Name="Extension" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="Max" Name="Photo" Type="Edm.Binary"/><Property FixedLength="false" MaxLength="Max" Name="Notes" Type="Edm.String" Unicode="true"/><Property Name="ReportsTo" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="255" Name="PhotoPath" Type="Edm.String" Unicode="true"/><NavigationProperty FromRole="Employees" Name="Employees1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees1"/><NavigationProperty FromRole="Employees1" Name="Employee1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees"/><NavigationProperty FromRole="Employees" Name="Orders" Relationship="NorthwindModel.FK_Orders_Employees" ToRole="Orders"/><NavigationProperty FromRole="Employees" Name="Territories" Relationship="NorthwindModel.EmployeeTerritories" ToRole="Territories"/></EntityType>
+				<EntityType Name="Order_Detail"><Key><PropertyRef Name="OrderID"/><PropertyRef Name="ProductID"/></Key><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property Name="ProductID" Nullable="false" Type="Edm.Int32"/><Property Name="UnitPrice" Nullable="false" Precision="19" Scale="4" Type="Edm.Decimal"/><Property Name="Quantity" Nullable="false" Type="Edm.Int16"/><Property Name="Discount" Nullable="false" Type="Edm.Single"/><NavigationProperty FromRole="Order_Details" Name="Order" Relationship="NorthwindModel.FK_Order_Details_Orders" ToRole="Orders"/><NavigationProperty FromRole="Order_Details" Name="Product" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Products"/></EntityType>
+			<EntityType Name="Product"><Key><PropertyRef Name="ProductID"/></Key><Property Name="ProductID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+				xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="SupplierID" Type="Edm.Int32"/><Property Name="CategoryID" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="20" Name="QuantityPerUnit" Type="Edm.String" Unicode="true"/><Property Name="UnitPrice" Precision="19" Scale="4" Type="Edm.Decimal"/><Property Name="UnitsInStock" Type="Edm.Int16"/><Property Name="UnitsOnOrder" Type="Edm.Int16"/><Property Name="ReorderLevel" Type="Edm.Int16"/><Property Name="Discontinued" Nullable="false" Type="Edm.Boolean"/><NavigationProperty FromRole="Products" Name="Category" Relationship="NorthwindModel.FK_Products_Categories" ToRole="Categories"/><NavigationProperty FromRole="Products" Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details"/><NavigationProperty FromRole="Products" Name="Supplier" Relationship="NorthwindModel.FK_Products_Suppliers" ToRole="Suppliers"/></EntityType>
+			<EntityType Name="Region"><Key><PropertyRef Name="RegionID"/></Key><Property Name="RegionID" Nullable="false" Type="Edm.Int32"/><Property FixedLength="true" MaxLength="50" Name="RegionDescription" Nullable="false" Type="Edm.String" Unicode="true"/><NavigationProperty FromRole="Region" Name="Territories" Relationship="NorthwindModel.FK_Territories_Region" ToRole="Territories"/></EntityType>
+			<EntityType Name="Shipper"><Key><PropertyRef Name="ShipperID"/></Key><Property Name="ShipperID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+				xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/><Property FixedLength="false" MaxLength="40" Name="CompanyName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="24" Name="Phone" Type="Edm.String" Unicode="true"/><NavigationProperty FromRole="Shippers" Name="Orders" Relationship="NorthwindModel.FK_Orders_Shippers" ToRole="Orders"/></EntityType>
+			<EntityType Name="Supplier"><Key><PropertyRef Name="SupplierID"/></Key><Property Name="SupplierID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+				xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/><Property FixedLength="false" MaxLength="40" Name="CompanyName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="30" Name="ContactName" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="30" Name="ContactTitle" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="60" Name="Address" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="City" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Region" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="10" Name="PostalCode" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Country" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="24" Name="Phone" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="24" Name="Fax" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="Max" Name="HomePage" Type="Edm.String" Unicode="true"/><NavigationProperty FromRole="Suppliers" Name="Products" Relationship="NorthwindModel.FK_Products_Suppliers" ToRole="Products"/></EntityType>
+			<EntityType Name="Territory"><Key><PropertyRef Name="TerritoryID"/></Key><Property FixedLength="false" MaxLength="20" Name="TerritoryID" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="true" MaxLength="50" Name="TerritoryDescription" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="RegionID" Nullable="false" Type="Edm.Int32"/><NavigationProperty FromRole="Territories" Name="Region" Relationship="NorthwindModel.FK_Territories_Region" ToRole="Region"/><NavigationProperty FromRole="Territories" Name="Employees" Relationship="NorthwindModel.EmployeeTerritories" ToRole="Employees"/></EntityType>
+			<EntityType Name="Alphabetical_list_of_product"><Key><PropertyRef Name="CategoryName"/><PropertyRef Name="Discontinued"/><PropertyRef Name="ProductID"/><PropertyRef Name="ProductName"/></Key><Property Name="ProductID" Nullable="false" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="SupplierID" Type="Edm.Int32"/><Property Name="CategoryID" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="20" Name="QuantityPerUnit" Type="Edm.String" Unicode="true"/><Property Name="UnitPrice" Precision="19" Scale="4" Type="Edm.Decimal"/><Property Name="UnitsInStock" Type="Edm.Int16"/><Property Name="UnitsOnOrder" Type="Edm.Int16"/><Property Name="ReorderLevel" Type="Edm.Int16"/><Property Name="Discontinued" Nullable="false" Type="Edm.Boolean"/><Property FixedLength="false" MaxLength="15" Name="CategoryName" Nullable="false" Type="Edm.String" Unicode="true"/></EntityType>
+			<EntityType Name="Category_Sales_for_1997"><Key><PropertyRef Name="CategoryName"/></Key><Property FixedLength="false" MaxLength="15" Name="CategoryName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="CategorySales" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Current_Product_List"><Key><PropertyRef Name="ProductID"/><PropertyRef Name="ProductName"/></Key><Property Name="ProductID" Nullable="false" Type="Edm.Int32" p6:StoreGeneratedPattern="Identity"
+				xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/></EntityType>
+			<EntityType Name="Customer_and_Suppliers_by_City"><Key><PropertyRef Name="CompanyName"/><PropertyRef Name="Relationship"/></Key><Property FixedLength="false" MaxLength="15" Name="City" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="40" Name="CompanyName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="30" Name="ContactName" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="9" Name="Relationship" Nullable="false" Type="Edm.String" Unicode="false"/></EntityType>
+			<EntityType Name="Order_Details_Extended"><Key><PropertyRef Name="Discount"/><PropertyRef Name="OrderID"/><PropertyRef Name="ProductID"/><PropertyRef Name="ProductName"/><PropertyRef Name="Quantity"/><PropertyRef Name="UnitPrice"/></Key><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property Name="ProductID" Nullable="false" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="UnitPrice" Nullable="false" Precision="19" Scale="4" Type="Edm.Decimal"/><Property Name="Quantity" Nullable="false" Type="Edm.Int16"/><Property Name="Discount" Nullable="false" Type="Edm.Single"/><Property Name="ExtendedPrice" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Order_Subtotal"><Key><PropertyRef Name="OrderID"/></Key><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property Name="Subtotal" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Orders_Qry"><Key><PropertyRef Name="CompanyName"/><PropertyRef Name="OrderID"/></Key><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property FixedLength="true" MaxLength="5" Name="CustomerID" Type="Edm.String" Unicode="true"/><Property Name="EmployeeID" Type="Edm.Int32"/><Property Name="OrderDate" Type="Edm.DateTime"/><Property Name="RequiredDate" Type="Edm.DateTime"/><Property Name="ShippedDate" Type="Edm.DateTime"/><Property Name="ShipVia" Type="Edm.Int32"/><Property Name="Freight" Precision="19" Scale="4" Type="Edm.Decimal"/><Property FixedLength="false" MaxLength="40" Name="ShipName" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="60" Name="ShipAddress" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="ShipCity" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="ShipRegion" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="10" Name="ShipPostalCode" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="ShipCountry" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="40" Name="CompanyName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="60" Name="Address" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="City" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Region" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="10" Name="PostalCode" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="15" Name="Country" Type="Edm.String" Unicode="true"/></EntityType>
+			<EntityType Name="Product_Sales_for_1997"><Key><PropertyRef Name="CategoryName"/><PropertyRef Name="ProductName"/></Key><Property FixedLength="false" MaxLength="15" Name="CategoryName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="ProductSales" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Products_Above_Average_Price"><Key><PropertyRef Name="ProductName"/></Key><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="UnitPrice" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Products_by_Category"><Key><PropertyRef Name="CategoryName"/><PropertyRef Name="Discontinued"/><PropertyRef Name="ProductName"/></Key><Property FixedLength="false" MaxLength="15" Name="CategoryName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="20" Name="QuantityPerUnit" Type="Edm.String" Unicode="true"/><Property Name="UnitsInStock" Type="Edm.Int16"/><Property Name="Discontinued" Nullable="false" Type="Edm.Boolean"/></EntityType>
+			<EntityType Name="Sales_by_Category"><Key><PropertyRef Name="CategoryID"/><PropertyRef Name="CategoryName"/><PropertyRef Name="ProductName"/></Key><Property Name="CategoryID" Nullable="false" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="15" Name="CategoryName" Nullable="false" Type="Edm.String" Unicode="true"/><Property FixedLength="false" MaxLength="40" Name="ProductName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="ProductSales" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Sales_Totals_by_Amount"><Key><PropertyRef Name="CompanyName"/><PropertyRef Name="OrderID"/></Key><Property Name="SaleAmount" Precision="19" Scale="4" Type="Edm.Decimal"/><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property FixedLength="false" MaxLength="40" Name="CompanyName" Nullable="false" Type="Edm.String" Unicode="true"/><Property Name="ShippedDate" Type="Edm.DateTime"/></EntityType>
+			<EntityType Name="Summary_of_Sales_by_Quarter"><Key><PropertyRef Name="OrderID"/></Key><Property Name="ShippedDate" Type="Edm.DateTime"/><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property Name="Subtotal" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			<EntityType Name="Summary_of_Sales_by_Year"><Key><PropertyRef Name="OrderID"/></Key><Property Name="ShippedDate" Type="Edm.DateTime"/><Property Name="OrderID" Nullable="false" Type="Edm.Int32"/><Property Name="Subtotal" Precision="19" Scale="4" Type="Edm.Decimal"/></EntityType>
+			
+			<Association Name="FK_Products_Categories"><End Multiplicity="0..1" Role="Categories" Type="NorthwindModel.Category"/><End Multiplicity="*" Role="Products" Type="NorthwindModel.Product"/><ReferentialConstraint>
+					<Principal Role="Categories"><PropertyRef Name="CategoryID"/></Principal>
+					<Dependent Role="Products"><PropertyRef Name="CategoryID"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="CustomerCustomerDemo"><End Multiplicity="*" Role="Customers" Type="NorthwindModel.Customer"/><End Multiplicity="*" Role="CustomerDemographics" Type="NorthwindModel.CustomerDemographic"/></Association>
+			<Association Name="FK_Orders_Customers"><End Multiplicity="0..1" Role="Customers" Type="NorthwindModel.Customer"/><End Multiplicity="*" Role="Orders" Type="NorthwindModel.Order"/><ReferentialConstraint>
+					<Principal Role="Customers"><PropertyRef Name="CustomerID"/></Principal>
+					<Dependent Role="Orders"><PropertyRef Name="CustomerID"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Employees_Employees"><End Multiplicity="0..1" Role="Employees" Type="NorthwindModel.Employee"/><End Multiplicity="*" Role="Employees1" Type="NorthwindModel.Employee"/><ReferentialConstraint>
+					<Principal Role="Employees"><PropertyRef Name="EmployeeID"/></Principal>
+					<Dependent Role="Employees1"><PropertyRef Name="ReportsTo"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Orders_Employees"><End Multiplicity="0..1" Role="Employees" Type="NorthwindModel.Employee"/><End Multiplicity="*" Role="Orders" Type="NorthwindModel.Order"/><ReferentialConstraint>
+					<Principal Role="Employees"><PropertyRef Name="EmployeeID"/></Principal>
+					<Dependent Role="Orders"><PropertyRef Name="EmployeeID"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="EmployeeTerritories"><End Multiplicity="*" Role="Territories" Type="NorthwindModel.Territory"/><End Multiplicity="*" Role="Employees" Type="NorthwindModel.Employee"/></Association>
+			<Association Name="FK_Order_Details_Orders"><End Multiplicity="1" Role="Orders" Type="NorthwindModel.Order"/><End Multiplicity="*" Role="Order_Details" Type="NorthwindModel.Order_Detail"/><ReferentialConstraint>
+					<Principal Role="Orders"><PropertyRef Name="OrderID"/></Principal>
+					<Dependent Role="Order_Details"><PropertyRef Name="OrderID"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Order_Details_Products"><End Multiplicity="1" Role="Products" Type="NorthwindModel.Product"/><End Multiplicity="*" Role="Order_Details" Type="NorthwindModel.Order_Detail"/><ReferentialConstraint>
+					<Principal Role="Products"><PropertyRef Name="ProductID"/></Principal>
+					<Dependent Role="Order_Details"><PropertyRef Name="ProductID"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Orders_Shippers"><End Multiplicity="0..1" Role="Shippers" Type="NorthwindModel.Shipper"/><End Multiplicity="*" Role="Orders" Type="NorthwindModel.Order"/><ReferentialConstraint>
+					<Principal Role="Shippers"><PropertyRef Name="ShipperID"/></Principal>
+					<Dependent Role="Orders"><PropertyRef Name="ShipVia"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Products_Suppliers"><End Multiplicity="0..1" Role="Suppliers" Type="NorthwindModel.Supplier"/><End Multiplicity="*" Role="Products" Type="NorthwindModel.Product"/><ReferentialConstraint>
+					<Principal Role="Suppliers"><PropertyRef Name="SupplierID"/></Principal>
+					<Dependent Role="Products"><PropertyRef Name="SupplierID"/></Dependent></ReferentialConstraint>
+			</Association>
+			<Association Name="FK_Territories_Region"><End Multiplicity="1" Role="Region" Type="NorthwindModel.Region"/><End Multiplicity="*" Role="Territories" Type="NorthwindModel.Territory"/><ReferentialConstraint>
+					<Principal Role="Region"><PropertyRef Name="RegionID"/></Principal>
+					<Dependent Role="Territories"><PropertyRef Name="RegionID"/></Dependent></ReferentialConstraint>
+			</Association>
+			-->
+        </Schema>
+        <Schema Namespace="ODataWebV3.Northwind.Model" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="NorthwindEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true"
+			xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+                <EntitySet EntityType="NorthwindModel.Order" Name="Orders"/>
+                <EntitySet EntityType="NorthwindModel.Invoice" Name="Invoices"/>
+                <!--
+                <EntitySet EntityType="NorthwindModel.Category" Name="Categories"/>
+                <EntitySet EntityType="NorthwindModel.CustomerDemographic" Name="CustomerDemographics"/>
+                <EntitySet EntityType="NorthwindModel.Customer" Name="Customers"/>
+                <EntitySet EntityType="NorthwindModel.Employee" Name="Employees"/>
+                <EntitySet EntityType="NorthwindModel.Order_Detail" Name="Order_Details"/>
+                <EntitySet EntityType="NorthwindModel.Product" Name="Products"/>
+                <EntitySet EntityType="NorthwindModel.Region" Name="Regions"/>
+                <EntitySet EntityType="NorthwindModel.Shipper" Name="Shippers"/>
+                <EntitySet EntityType="NorthwindModel.Supplier" Name="Suppliers"/>
+                <EntitySet EntityType="NorthwindModel.Territory" Name="Territories"/>
+                <EntitySet EntityType="NorthwindModel.Alphabetical_list_of_product" Name="Alphabetical_list_of_products"/>
+                <EntitySet EntityType="NorthwindModel.Category_Sales_for_1997" Name="Category_Sales_for_1997"/>
+                <EntitySet EntityType="NorthwindModel.Current_Product_List" Name="Current_Product_Lists"/>
+                <EntitySet EntityType="NorthwindModel.Customer_and_Suppliers_by_City" Name="Customer_and_Suppliers_by_Cities"/>
+                <EntitySet EntityType="NorthwindModel.Order_Details_Extended" Name="Order_Details_Extendeds"/>
+                <EntitySet EntityType="NorthwindModel.Order_Subtotal" Name="Order_Subtotals"/>
+                <EntitySet EntityType="NorthwindModel.Orders_Qry" Name="Orders_Qries"/>
+                <EntitySet EntityType="NorthwindModel.Product_Sales_for_1997" Name="Product_Sales_for_1997"/>
+                <EntitySet EntityType="NorthwindModel.Products_Above_Average_Price" Name="Products_Above_Average_Prices"/>
+                <EntitySet EntityType="NorthwindModel.Products_by_Category" Name="Products_by_Categories"/>
+                <EntitySet EntityType="NorthwindModel.Sales_by_Category" Name="Sales_by_Categories"/>
+                <EntitySet EntityType="NorthwindModel.Sales_Totals_by_Amount" Name="Sales_Totals_by_Amounts"/>
+                <EntitySet EntityType="NorthwindModel.Summary_of_Sales_by_Quarter" Name="Summary_of_Sales_by_Quarters"/>
+                <EntitySet EntityType="NorthwindModel.Summary_of_Sales_by_Year" Name="Summary_of_Sales_by_Years"/>
+                <AssociationSet Association="NorthwindModel.FK_Products_Categories" Name="FK_Products_Categories">
+                    <End EntitySet="Categories" Role="Categories"/>
+                    <End EntitySet="Products" Role="Products"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.CustomerCustomerDemo" Name="CustomerCustomerDemo">
+                    <End EntitySet="CustomerDemographics" Role="CustomerDemographics"/>
+                    <End EntitySet="Customers" Role="Customers"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Orders_Customers" Name="FK_Orders_Customers">
+                    <End EntitySet="Customers" Role="Customers"/>
+                    <End EntitySet="Orders" Role="Orders"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Employees_Employees" Name="FK_Employees_Employees">
+                    <End EntitySet="Employees" Role="Employees"/>
+                    <End EntitySet="Employees" Role="Employees1"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Orders_Employees" Name="FK_Orders_Employees">
+                    <End EntitySet="Employees" Role="Employees"/>
+                    <End EntitySet="Orders" Role="Orders"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.EmployeeTerritories" Name="EmployeeTerritories">
+                    <End EntitySet="Employees" Role="Employees"/>
+                    <End EntitySet="Territories" Role="Territories"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Order_Details_Orders" Name="FK_Order_Details_Orders">
+                    <End EntitySet="Order_Details" Role="Order_Details"/>
+                    <End EntitySet="Orders" Role="Orders"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Order_Details_Products" Name="FK_Order_Details_Products">
+                    <End EntitySet="Order_Details" Role="Order_Details"/>
+                    <End EntitySet="Products" Role="Products"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Orders_Shippers" Name="FK_Orders_Shippers">
+                    <End EntitySet="Orders" Role="Orders"/>
+                    <End EntitySet="Shippers" Role="Shippers"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Products_Suppliers" Name="FK_Products_Suppliers">
+                    <End EntitySet="Products" Role="Products"/>
+                    <End EntitySet="Suppliers" Role="Suppliers"/>
+                </AssociationSet>
+                <AssociationSet Association="NorthwindModel.FK_Territories_Region" Name="FK_Territories_Region">
+                    <End EntitySet="Regions" Role="Region"/>
+                    <End EntitySet="Territories" Role="Territories"/>
+                </AssociationSet>
+                -->
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
