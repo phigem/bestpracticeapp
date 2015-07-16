@@ -89,7 +89,8 @@ sap.ui.define([
 			var aFilter = [];
 			var sQuery = oEvent.getParameter("query");
 			if (sQuery && jQuery.isNumeric(sQuery)) {
-				aFilter.push(new Filter("OrderID", FilterOperator.Contains, sQuery));
+			    var iQuery = parseInt(sQuery,10);
+				aFilter.push(new Filter("OrderID", FilterOperator.Contains, iQuery));
 			}
 
 			// filter binding
