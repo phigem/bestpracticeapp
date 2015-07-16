@@ -39,8 +39,7 @@ sap.ui.define([
 		    // We query the helper function that we defined on the app component to set the corresponding style class on the app view.
 		    // All controls inside the app view will now automatically adjust either to the compact or cozy size as defined by the style.
 		    this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
-		    
-		    
+
 			var oData = {
 				user: {
 					name: ""
@@ -48,8 +47,6 @@ sap.ui.define([
 			};
 			var oModel = new JSONModel(oData);
 			this.getView().setModel(oModel, "userdata");
-<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
-=======
 		},
 
 		onShowWelcomeMessage: function(oEvent) {
@@ -64,12 +61,11 @@ sap.ui.define([
 			// show message
 			MessageToast.show(sMsg);
 		},
-		
+
 		//The onOpenDialog method now accesses its component by calling the helper method getOwnerComponent. 
         //When calling the open method of the reuse object we pass in the current view to connect it to the dialog. 
 		onOpenDialog: function() {
 			this.getOwnerComponent().dialogMessage.open(this.getView());
->>>>>>> cbb7fe1 Rebase after Bullshit
 		},
 
 		onFilterInvoices: function(oEvent) {
@@ -101,31 +97,6 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
 		}
-
-		onShowWelcomeMessage: function(oEvent) {
-			this.onOpenDialog();
-			// get i18n model
-			var i18nModel = this.getView().getModel("i18n");
-			// read msg from i18n model
-			var oBundle = i18nModel.getResourceBundle();
-			var sRecipient = this.getView().getModel("userdata").getProperty("/user/name");
-			var sMsg = oBundle.getText("GREET_MSG_TEXT", [sRecipient]);
-			// show message
-			MessageToast.show(sMsg);
-		},
-		_getDialog: function() {
-			if (!this._oDialog) {
-				this._oDialog = sap.ui.xmlfragment("de.ciber.bestpracticeapp.view.fragment.MessagePopup", this);
-				this.getView().addDependent(this._oDialog);
-			}
-			return this._oDialog;
-		},
-		onOpenDialog: function() {
-			this._getDialog().open();
-		},
-		onCloseDialog: function() {
-			this._getDialog().close();
-		},
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).
@@ -140,17 +111,9 @@ sap.ui.define([
 		 * This hook is the same one that SAPUI5 controls get after being rendered.
 		 * @memberOf de.ciber.bestpractice.view.RootView
 		 */
-<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
-		onAfterRendering: function() {
-			var oDefaultControl = this.getView().byId("idDefaultControl");
-			var oTestControl = this.getView().byId("idTestControl");
-
-		}
-=======
 		//	onAfterRendering: function() {
-		//	
+		//
 		//	}
->>>>>>> cbb7fe1 Rebase after Bullshit
 
 		/**
 		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

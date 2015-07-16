@@ -20,11 +20,6 @@
 				<content>
 					<Panel headerText="Locale Invoices" width="auto">
 						<content>
-<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
-                            <ciber:CiberInput highlighted="true"/>
-                            <ciber:CiberInput type="Password" highlighted="true"/>
-                            <Button press="onOpenDialog" text="Open Dialog Popup"/>
-=======
 							<List class="sapUiResponsiveMargin" headerText="Invoice List" id="idInvoiceList" items="{invoice>/Invoices}" width="auto">
 								<headerToolbar>
 									<Toolbar>
@@ -54,7 +49,6 @@
 									<ObjectListItem title="{northwind>OrderID}"/>
 								</items>
 							</List>
->>>>>>> cbb7fe1 Rebase after Bullshit
 						</content>
 					</Panel>
 				</content>

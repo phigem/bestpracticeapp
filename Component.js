@@ -17,15 +17,10 @@ In the component, we now completely remove the lines of code containing the mode
 sap.ui.define([
    "sap/ui/core/UIComponent",
    "sap/ui/model/json/JSONModel",
-<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
-   "de/ciber/bestpracticeapp/controller/DialogPopup"
-], function(UIComponent, JSONModel, DialogPopup) {
-=======
    "sap/ui/model/odata/v2/ODataModel",
    "de/ciber/bestpracticeapp/controller/popup/DialogMessage",
 	"sap/ui/Device"
 ], function(UIComponent, JSONModel, ODataModel, DialogMessage, Device) {
->>>>>>> cbb7fe1 Rebase after Bullshit
 	"use strict";
 	return UIComponent.extend("de.ciber.bestpracticeapp.Component", {
 	    //All application-specific configuration settings will further be put in a separate descriptor file called manifest.json.
@@ -44,24 +39,7 @@ sap.ui.define([
 			// always use absolute paths relative to our own component
 			var rootPath = jQuery.sap.getModulePath("de.ciber.bestpracticeapp");
 			jQuery.sap.log.info(rootPath, "ciber-log: Details for rootpath", this);
-<<<<<<< Upstream, based on f17785df661b3fb378cc79273e1cdb484a0de424
-			// set device model
-			var deviceModel = new JSONModel({
-				isTouch: sap.ui.Device.support.touch,
-				isNoTouch: !sap.ui.Device.support.touch,
-				isPhone: sap.ui.Device.system.phone,
-				isNoPhone: !sap.ui.Device.system.phone,
-				listMode: sap.ui.Device.system.phone ? "None" : "SingleSelectMaster",
-				listItemType: sap.ui.Device.system.phone ? "Active" : "Inactive"
-			});
-			deviceModel.setDefaultBindingMode("OneWay");
-			this.setModel(deviceModel, "device");
-            
-            
-            //We now expand our reuse concept and invoke the dialog on the component level. 
-            //This allows us to use the dialog in multiple views throughout our app without having to put the instantiation code in each controller.
-            this.dialogPopup = new DialogPopup();
-=======
+
 			// In the app component we add a dependency to sap.ui.Device and initialize the device model in the init method. We can simply pass the loaded dependency Device to the constructor function of the JSONModel. 
 			// This will make most propeties of the OpenUI5 device API available as a JSON model, We have to set the binding mode to OneWay as the device model is read-only and we want to avoid changing the model accidentially. 
 			// The model is then set on the component as a named model so that we can reference it in data binding as we have seen in the view above.
@@ -93,7 +71,7 @@ sap.ui.define([
 				}
 			}
 			return this._sContentDensityClass;
->>>>>>> cbb7fe1 Rebase after Bullshit
+
 		}
 	});
 });
