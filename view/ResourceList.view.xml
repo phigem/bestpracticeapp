@@ -1,0 +1,72 @@
+<mvc:View controllerName="de.ciber.bestpracticeapp.controller.ResourceList" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" >
+	<Page showNavButton="true" title="Verfügbare Resourcen: {resource>/resourceCount}">
+		<headerContent>
+			<Button icon="sap-icon://drop-down-list"/>
+		</headerContent>
+		<subHeader>
+			<Toolbar>
+			    <ToolbarSpacer/>
+			    <SearchField placeholder="Ressource filtern..." search="onResourceSearch" showRefreshButton="true" width="auto"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<List footerText="footerText" id="idResourceList" items="{ path : 'resource>/resources', sorter : { path : 'SortProperty', group : false } }"
+				mode="SingleSelectMaster" width="auto">
+				<!--
+				<headerToolbar>
+				</headerToolbar>
+				-->
+				<infoToolbar>
+					<Toolbar design="Info">
+					<ToolbarSpacer/>
+					<Select
+                            type="IconOnly"
+                            icon="sap-icon://sort"
+                            autoAdjustWidth="true">
+                                <core:Item key="" text="Reihenfolge" />
+                                <core:Item key="" text="Name" />
+                                <core:Item key="" text="SStartdatum" />
+                        </Select>
+						<Select
+                            type="IconOnly"
+                            icon="sap-icon://filter"
+                            autoAdjustWidth="true">
+                                <core:Item key="" text="RUN" />
+                                <core:Item key="" text="OFF" />
+                                <core:Item key="" text="STR" />
+                                <core:Item key="" text="UNT" />
+                        </Select>
+                        <Select
+                            type="IconOnly"
+                            icon="sap-icon://group-2"
+                            autoAdjustWidth="true">
+                                <core:Item key="" text="Status" />
+                                <core:Item key="" text="Verantworlicher" />
+                        </Select>
+					</Toolbar>
+				</infoToolbar>
+				
+				<items>
+					<ObjectListItem intro="SAP Resource: {resource>SAP_ARBPL}" title="{resource>Name}" type="Navigation" unread="false" visible="true">
+						<ObjectAttribute
+							text="{ path: 'resource>StartDate', type: 'sap.ui.model.type.DateTime', formatOptions: { source: { format: 'yyyy-MM-ddThh:mm:ss' }, style:
+							'short' } }" title="Start"/>
+						<firstStatus>
+							<ObjectStatus state="{= ${resource>Status} === 'RUN' ? 'Success' : 'Error'}" text="{resource>Status}" title="Status"/>
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				<Button text="Add" icon="sap-icon://add"/>
+				<ToolbarSpacer/>
+				<Button text="Edit" icon="sap-icon://edit"/>
+				<ToolbarSpacer/>
+				<Button text="Delete" icon="sap-icon://delete"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

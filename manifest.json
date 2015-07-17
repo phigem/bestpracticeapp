@@ -43,6 +43,10 @@
 				"settings": {
 					"odataVersion": "3.0"
 				}
+			},
+			"resourceList": {
+				"uri": "/model/ProductionResources.json",
+				"type": "JSON"
 			}
 		}
 	},
@@ -68,7 +72,7 @@
 		"documentation": {
 			"rootView": "If you specify this parameter, the component will automatically instantiate the view and use it as the root for this component",
 			"dependencies": "Here we declare the UI libraries used in the application",
-			"models": "Defines models that should be created or destroyed along the component's lifecycle. The key represents the model name. Use an empty string (\"\") for the default model.\ntype - Model class name\nuri - Relative URL in the component; takes embeddedBy into account if filled, or server absolute for model\nsettings - Object that is passed to the model constructor\ndataSource - String of key/alias from sap.app dataSources to reference an existing data source",
+			"models": "Defines models that should be created or destroyed along the component's lifecycle. The key represents the model name. Use an empty string for the default model.\ntype - Model class name\nuri - Relative URL in the component; takes embeddedBy into account if filled, or server absolute for model\nsettings - Object that is passed to the model constructor\ndataSource - String of key/alias from sap.app dataSources to reference an existing data source",
 			"resources": "Relative URLs in the component, taking embeddedBy into account if filled, to js (JavaScript) and css resources the app needs for specifying the uri and an id (optional) for CSS. The JavaScript files are loaded by the require mechanism. The CSS files are added to the head of the HTML page as a link tag. The resources are resolved relative to the location of the manifest.json file.",
 			"config": "Static configuration; specify the name-value pairs that you need in your component.",
 			"routing": "Provides configuration parameters for route and router."
@@ -92,6 +96,9 @@
 			},
 			"northwind": {
 				"dataSource": "northwindService"
+			},
+			"resource": {
+				"dataSource": "resourceList"
 			}
 		},
 		"resources": {
@@ -101,10 +108,31 @@
 			}
 		  ]
 		},
-		"config": {
-			"documentation1": "In the descriptor, we add a second custom configuration parameter that points to our remote data source. Due to cross-site scripting restrictions in JavaScript, we cannot connect to a remote URL from our local app but have to use a local proxy.",
-			"documentation2": "A proxy is simply a local script that connects to the remote server and returns the response to our app. In a productive scenario this would of course be a direct connection. We use the proxy to access the northwind test service from OData.org and fetch our invoices now from there instead of our local JSON data.",
-			"invoiceLocal": "/model/Invoices.json"
+		"routing": {
+			"documentation": {
+				"config": "This section contains the global router configuration and default values that apply for all routes and targets. We define the router class that we want to use and where our views are located in the app. To load and display views automatically, we also specify which control is used to display the pages and what aggregation should be filled when a new page is displayed.",
+				"routes": "Each route defines a name, a pattern, and one or more targets to navigate to when the route has been hit. The pattern is basically the URL part that matches to the route, we define two routes for our app. The first one is a default route that will show the overview page with the content from the previous steps, and the second is the detail route with the URL pattern detail that will show a new page.",
+				"targets": "A target defines a view that is displayed, it is associated with one or more routes and it can also be displayed manually from within the app. Whenever a target is displayed, the corresponding view is loaded and shown in the app. In our app we simply define two targets with a view name that corresponds to the target name. "
+			},
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "de.ciber.bestpracticeapp.view",
+				"controlId": "idRootApp",
+				"controlAggregation": "masterPages"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "resources",
+					"target": "resources"
+		}
+	  ],
+			"targets": {
+				"resources": {
+					"viewName": "ResourceList"
+				}
+			}
 		}
 	}
 }

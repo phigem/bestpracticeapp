@@ -1,0 +1,22 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page>
+		<content>
+			<Panel expandable="true" expanded="false" headerText="Locale Invoices" width="auto">
+				<content>
+					<List class="sapUiResponsiveMargin" headerText="Invoice List" id="idInvoiceList" items="{invoice>/Invoices}" width="auto">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>invoiceListTitle}"/>
+								<ToolbarSpacer/>
+								<SearchField search="onFilterInvoices" width="50%"/>
+							</Toolbar>
+						</headerToolbar>
+						<items>
+							<ObjectListItem title="{invoice>Quantity} x {invoice>ProductName}"/>
+						</items>
+					</List>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

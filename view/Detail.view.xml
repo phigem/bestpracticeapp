@@ -1,0 +1,10 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="de.ciber.bestpracticeapp.controller.Detail">
+	<Page
+		title="Details zum Auftrag"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<ObjectHeader
+			intro="{northwind>OrderID}"
+			title="{northwind>CustomerID}"/>
+	</Page>
+</mvc:View>

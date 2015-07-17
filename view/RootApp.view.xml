@@ -6,59 +6,35 @@
     - The default XML namespace is sap.m
     - Other XML namespaces are referenced by an alias
 -->
-<mvc:View controllerName="de.ciber.bestpracticeapp.controller.RootApp" displayBlock="true" xmlns:ciber="de.ciber.bestpracticeapp.control"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-	<App class="sapUiCiber" height="100%" defaultTransitionName="slide" backgroundRepeat="false" backgroundColor="" backgroundOpacity="1"
-		backgroundImage="" afterNavigate="" homeIcon="" id="idRootApp" navigate="" orientationChange="" visible="true" width="100%">
-		<tooltip></tooltip>
-		<!-- sap.ui.core.TooltipBase -->
-		<dependents></dependents>
-		<!-- sap.ui.core.Control, since 1.19 -->
-		<pages>
-			<Page title="{i18n>HOME_PAGE_TITLE}">
-				<Button press="onOpenDialog" text="Open Dialog Popup"/>
-				<content>
-					<Panel headerText="OData Service" width="auto">
-						<content>
-							<List class="sapUiResponsiveMargin" headerText="Orders" id="idOrderList"
-								items="{ path : 'northwind>/Orders', sorter : { path : 'ShipName', group : true } }" width="auto">
-								<headerToolbar>
-									<Toolbar>
-										<Title text="Orders"/>
-										<ToolbarSpacer/>
-										<SearchField search="onFilterOrder" width="50%"/>
-									</Toolbar>
-								</headerToolbar>
-								<items>
-									<ObjectListItem iconDensityAware="true" detailPress="onOrderDetailPress" markFavorite="true" type="Active" title="{northwind>OrderID}" number="{northwind>Freight}"
-										numberUnit="EUR" intro="Auftragsnummer" icon="sap-icon://customer-order-entry" press="onOrderPress" selected="false" markFlagged="true" showMarkers="true" markLocked="true" unread="false" visible="true">
-										<ObjectAttribute text="{northwind>ShipName}" title="Kunde"/>
-										<ObjectAttribute text="{northwind>ShipAddress}" title="Straße"/>
-										<ObjectAttribute text="{northwind>ShipPostalCode}, {northwind>ShipCity}" title="PLZ, Stadt"/>
-										<ObjectAttribute text="{northwind>ShipRegion}/{northwind>ShipCountry}" title="Region/Land"/>
-									</ObjectListItem>
-								</items>
-							</List>
-						</content>
-					</Panel>
-					<Panel headerText="Locale Invoices" width="auto" expanded="false" expandable="true">
-						<content>
-							<List class="sapUiResponsiveMargin" headerText="Invoice List" id="idInvoiceList" items="{invoice>/Invoices}" width="auto">
-								<headerToolbar>
-									<Toolbar>
-										<Title text="{i18n>invoiceListTitle}"/>
-										<ToolbarSpacer/>
-										<SearchField search="onFilterInvoices" width="50%"/>
-									</Toolbar>
-								</headerToolbar>
-								<items>
-									<ObjectListItem title="{invoice>Quantity} x {invoice>ProductName}"/>
-								</items>
-							</List>
-						</content>
-					</Panel>
-				</content>
-			</Page>
-		</pages><!-- sap.ui.core.Control -->
-	</App>
+<mvc:View controllerName="de.ciber.bestpracticeapp.controller.RootApp" 
+    displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m">
+	<!--
+	Our App view is now only containing the empty app tag. The router will automatically add the page that corresponds to the current URL into the app control. 
+	The router identifies the app control with the ID that corresponds to the property controlId: “idRootApp” in the AppDescriptor.
+	-->
+	<SplitApp id="idRootApp"
+		defaultTransitionNameDetail="slide"
+		defaultTransitionNameMaster="slide"
+		mode="ShowHideMode"
+		masterButtonText=""
+		backgroundColor=""
+		backgroundImage=""
+		backgroundRepeat="false"
+		backgroundOpacity="1"
+		homeIcon=""
+		masterNavigate=""
+		afterMasterNavigate=""
+		masterButton=""
+		beforeMasterOpen=""
+		afterMasterOpen=""
+		beforeMasterClose=""
+		afterMasterClose=""
+		detailNavigate=""
+		afterDetailNavigate=""
+		orientationChange="">
+			<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
+			<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
+	</SplitApp>
 </mvc:View>

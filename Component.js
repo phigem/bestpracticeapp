@@ -47,15 +47,22 @@ sap.ui.define([
 			oDeviceModel.setDefaultBindingMode("OneWay");
 			this.setModel(oDeviceModel, "device");
 
-			var oConfig = this.getMetadata().getConfig();
+			//var oConfig = this.getMetadata().getConfig();
 
 			// set invoice model - local
 			//In the init method we now create a JSON model with our test data file by passing in the fully qualified path from the index.html file to the JSONModel constructor. 
 			//We can transform the namespace and the local filename to a path relative to the application root by calling the getModulePath helper method of OpenUI5. Therefore we have to pass in the namespace of the app and the relative path to a file. 
 			//The namespace of the app can be read from the id parameter in the section sap.app by using the descriptor API. The custom configuration parameter is accessed similarly by calling this.getConfig and accessing the parameter by the key we defined.
-			var sNamespace = this.getMetadata().getManifestEntry("sap.app").id;
-			var oInvoiceModel = new JSONModel(jQuery.sap.getModulePath(sNamespace, oConfig.invoiceLocal));
-			this.setModel(oInvoiceModel, "invoice");
+// 			var sNamespace = this.getMetadata().getManifestEntry("sap.app").id;
+// 			var oInvoiceModel = new JSONModel(jQuery.sap.getModulePath(sNamespace, oConfig.invoiceLocal));
+// 			this.setModel(oInvoiceModel, "invoice");
+			
+			
+			// create the views based on the url/hash
+			// We do not need to instantiate the router manually, it is automatically instantiated based on our AppDescriptor configuration and assigned to the component.
+			// Initializing the router will evaluate the current URL and load the corresponding view automatically. This is done with the help of the routes and targets that have been configured in the AppDescriptor. 
+			// If a route has been hit, the view of its corresponding target is loaded and displayed.
+			this.getRouter().initialize();
 			
 			//We now expand our reuse concept and invoke the dialog on the component level. 
             //This allows us to use the dialog in multiple views throughout our app without having to put the instantiation code in each controller.

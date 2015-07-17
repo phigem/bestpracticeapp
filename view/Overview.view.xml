@@ -1,0 +1,27 @@
+<mvc:View controllerName="de.ciber.bestpracticeapp.controller.Overview" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page title="Auftragsliste der Northwind AG">
+		<content>
+			<Panel>
+				<content>
+					<List id="idOrderList" items="{ path : 'northwind>/Orders', sorter : { path : 'ShipName', group : true } }" width="auto">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Auftrag suchen:"/>
+								<ToolbarSpacer/>
+								<SearchField search="onFilterOrder" width="50%"/>
+							</Toolbar>
+						</headerToolbar>
+						<items>
+							<ObjectListItem iconDensityAware="true" markFavorite="true" detailPress="onOrderDetailPress" icon="sap-icon://customer-order-entry"
+								intro="Auftragsnummer" markFlagged="true" number="{northwind>Freight}" markLocked="true" numberUnit="EUR" press="onOrderPress" selected="false" showMarkers="true"
+								title="{northwind>OrderID}" type="Navigation" unread="false" visible="true">
+								<ObjectAttribute text="{northwind>ShipName}" title="Kunde"/>
+								<ObjectAttribute text="{northwind>ShipPostalCode}, {northwind>ShipCity}" title="PLZ, Stadt"/>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

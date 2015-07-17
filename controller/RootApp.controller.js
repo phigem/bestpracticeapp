@@ -40,18 +40,9 @@ sap.ui.define([
 			// All controls inside the app view will now automatically adjust either to the compact or cozy size as defined by the style.
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
-			var oData = {
-				user: {
-					name: ""
-				}
-			};
-			var oModel = new JSONModel(oData);
-			this.getView().setModel(oModel, "userdata");
 		},
 
-		onShowWelcomeMessage: function(oEvent) {
-			oEvent.getSource().toggleStyleClass("myCustomButton");
-
+		onShowWelcomeMessage: function() {
 			// get i18n model
 			var i18nModel = this.getView().getModel("i18n");
 			// read msg from i18n model
@@ -77,59 +68,6 @@ sap.ui.define([
 			}
 			var oList = this.getView().byId("idInvoiceList");
 			var oBinding = oList.getBinding("items");
-			oBinding.filter(aFilter);
-		},
-
-		onFilterOrder: function(oEvent) {
-
-			// array of filters on which logical conjunction is applied
-			// aFilter is an array of other instances of sap.ui.model.Filter. If bAnd is set all filters within the filter will be ANDed else they will be ORed.
-			var aFilter = [];
-
-			//indicates whether an "and" logical conjunction is applied on the filters. If it's set to false, an "or" conjunction is applied
-			var bAnd = false;
-
-			var sQuery = oEvent.getParameter("query");
-
-			if (sQuery) {
-				if (jQuery.isNumeric(sQuery)) {
-					var iQuery = parseInt(sQuery, 10);
-					aFilter.push(new Filter({
-						path: "OrderID", //the binding path for this filter
-						operator: FilterOperator.Contains, //operator used for the filter
-						value1: iQuery //first value to use for filter
-					}));
-				}
-				aFilter.push(new Filter({
-					path: "ShipName",
-					operator: FilterOperator.Contains,
-					value1: sQuery
-				}));
-				aFilter.push(new Filter({
-					path: "ShipAddress",
-					operator: FilterOperator.Contains,
-					value1: sQuery
-				}));
-				aFilter.push(new Filter({
-					path: "ShipCity",
-					operator: FilterOperator.Contains,
-					value1: sQuery
-				}));
-
-				aFilter = new Filter(aFilter, bAnd);
-
-
-			} else {
-			    
-			    // filter binding
-				aFilter = null;
-				
-			}
-			
-			var oList = this.getView().byId("idOrderList");
-			var oBinding = oList.getBinding("items");
-			
-			// filter binding
 			oBinding.filter(aFilter);
 		}
 		/**

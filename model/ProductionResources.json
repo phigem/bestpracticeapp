@@ -1,0 +1,113 @@
+{
+    "resourceCount" : 7,
+	"resources": [
+		{
+			"ID": 10000,
+			"Name": "Vormischer 1",
+			"SAP_ARBPL": "MISCH1",
+			"Status": "RUN",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Karl Karsten",
+			"successor": [
+				{
+					"successorID": 10003
+				}
+	      ],
+			"SortProperty": 0,
+			"icon": null
+	},
+		{
+			"ID": 10001,
+			"Name": "Vormischer 2",
+			"SAP_ARBPL": "MISCH2",
+			"Status": "OFF",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Karl Karsten",
+			"successor": [
+				{
+					"successorID": 10003
+				}
+	      ],
+			"SortProperty": 1,
+			"icon": null
+	},
+		{
+			"ID": 10003,
+			"Name": "Verdichter 1",
+			"SAP_ARBPL": "VDICH1",
+			"Status": "RUN",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Günter Meier",
+			"successor": [
+				{
+					"successorID": 10004
+				}
+	      ],
+			"SortProperty": 2,
+			"icon": null
+	},
+		{
+			"ID": 10004,
+			"Name": "Abfüllung 1",
+			"SAP_ARBPL": "ABFU1",
+			"Status": "RUN",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Heike Blaumann",
+			"successor": [
+				{
+					"successorID": 10006
+				},
+				{
+					"successorID": 10007
+				}
+	      ],
+			"SortProperty": 3,
+			"icon": null
+	},
+		{
+			"ID": 10006,
+			"Name": "Verpackung 1",
+			"SAP_ARBPL": "VERP1",
+			"Status": "RUN",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Ralf Kullmann",
+			"successor": [
+				{
+					"successorID": 10008
+				}
+	      ],
+			"SortProperty": 4,
+			"icon": null
+	},
+		{
+			"ID": 10007,
+			"Name": "Verpackung 2",
+			"SAP_ARBPL": "VERP2",
+			"Status": "UNT",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Erik Knopf",
+			"successor": [
+				{
+					"successorID": 10008
+				}
+	      ],
+			"SortProperty": 5,
+			"icon": null
+	},
+		{
+			"ID": 10008,
+			"Name": "Versand",
+			"SAP_ARBPL": "VERS1",
+			"Status": "STR",
+			"StartDate": "2015-04-01T00:00:00",
+			"Responsible": "Meike Müller",
+			"successor": [
+				{
+					"successorID": null
+				}
+	      ],
+			"SortProperty": 6,
+			"icon": null
+	}
+  ]
+}
